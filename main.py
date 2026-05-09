@@ -1,11 +1,5 @@
-# Criacao do projeto 2 - Orientado pelo professor Orlando Saraiva  - E.de Dados.
-# Parte 1 - Criacao das classes
-
-
 
 class Musica:
-    # Criacao de uma faixa musical (caixinha magica - piada interna)
-
     def __init__(self, id, titulo, artista, genero, bpm):
         self.id = id
         self.titulo = titulo
@@ -19,35 +13,90 @@ class Musica:
 
 
 class NodoLista:
-    #carrega uma musica e tem um ponteiro para o próximo nó. (FIFO)
-
     def __init__(self, musica):
         self.musica = musica
-        self.proximo = None  
+        self.proximo = None
 
+
+class Biblioteca:
+    
+    #Lista encadeada simples que guarda todas as músicas.
+
+    def __init__(self):
+        self.cabeca = None
+        self._contador = 0
+
+    def inserir(self, titulo, artista, genero, bpm):
+        self._contador += 1
+        nova_musica = Musica(self._contador, titulo, artista, genero, bpm)
+        novo_nodo = NodoLista(nova_musica)
+
+        if self.cabeca is None:
+            self.cabeca = novo_nodo
+            return
+
+       
+        atual = self.cabeca
+        while atual.proximo is not None:
+            atual = atual.proximo
+        
+        atual.proximo = novo_nodo
+
+  
+    def listar(self):
+        if self.cabeca is None:
+            print("  A biblioteca está vazia.")
+            return
+
+        atual = self.cabeca
+        while atual is not None:
+            atual.musica.exibir()
+            atual = atual.proximo
+
+  
+    def buscar(self, valor):
+        atual = self.cabeca
+        while atual is not None:
+            musica = atual.musica
+            # compara por id se valor for número, ou por título se for texto
+            if musica.id == valor or musica.titulo.lower() == str(valor).lower():
+                return musica   # achou — devolve o objeto Musica
+            atual = atual.proximo
+        return None  # não encontrou
+
+
+# TESTE
 
 
 if __name__ == "__main__":
+    biblioteca = Biblioteca()
 
-    # Criando Musicas
-    m1 = Musica(1, "Weightless", "Marconi Union", "Ambient", 60)
-    m2 = Musica(2, "Lofi Study", "ChilledCow", "Lo-fi", 85)
-    m3 = Musica(3, "Eye of the Tiger", "Survivor", "Rock", 109)
+    print("=== Adicionando músicas ===\n")
+    biblioteca.inserir("Weightless",      "Marconi Union", "Ambient", 60)
+    biblioteca.inserir("Lofi Study",      "ChilledCow",    "Lo-fi",   85)
+    biblioteca.inserir("Eye of the Tiger","Survivor",      "Rock",    109)
+    biblioteca.inserir("Lose Yourself",   "Eminem",        "Rap",     171)
 
-    # Nos para cada musica
-    nodo1 = NodoLista(m1)
-    nodo2 = NodoLista(m2)
-    nodo3 = NodoLista(m3)
+    print("=== Biblioteca completa ===\n")
+    biblioteca.listar()
 
-    
-    nodo1.proximo = nodo2
-    nodo2.proximo = nodo3
-    
-    print("=== Músicas encadeadas ===\n")
+    print("\n=== Buscando por id 2 ===\n")
+    resultado = biblioteca.buscar(2)
+    if resultado:
+        resultado.exibir()
+    else:
+        print("  Música não encontrada.")
 
-    atual = nodo1  # começa no primeiro elo
-    while atual is not None:
-        atual.musica.exibir()
-        atual = atual.proximo  # avança para o próximo elo
+    print("\n=== Buscando por título 'Lose Yourself' ===\n")
+    resultado = biblioteca.buscar("Lose Yourself")
+    if resultado:
+        resultado.exibir()
+    else:
+        print("  Música não encontrada.")
 
-    print("\nFim da corrente!")
+    print("\n=== Buscando id que não existe (99) ===\n")
+    resultado = biblioteca.buscar(99)
+    if resultado:
+        resultado.exibir()
+    else:
+        print("  Música não encontrada.")
