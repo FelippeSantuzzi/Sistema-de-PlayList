@@ -174,6 +174,17 @@ def montar_filas_por_humor(biblioteca, relaxar, focar, animar, treinar):
 
     print("Filas de humor montadas com sucesso.")
 
+def reproduzir_proxima(fila, historico):
+    musica = fila.dequeue()
+
+    if musica is None:
+        return
+
+    print("\nReproduzindo agora:")
+    musica.exibir()
+
+    historico.enqueue(musica)
+    print("Música adicionada ao histórico.")
 
 # Teste
 
