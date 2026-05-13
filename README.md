@@ -1,8 +1,8 @@
-# Sistema de PlayList
+# Sistema de Playlist Inteligente
 
 Sistema desenvolvido em Python para gerenciamento de músicas utilizando **estruturas de dados encadeadas**, sem uso de `list`, `deque` ou qualquer estrutura pronta do Python para armazenar os dados principais.
 
-O projeto simula uma biblioteca musical capaz de organizar músicas, montar filas de reprodução por humor e manter histórico das músicas reproduzidas.
+O projeto simula uma biblioteca musical capaz de organizar músicas, montar filas de reprodução e manter histórico das músicas reproduzidas.
 
 ---
 
@@ -54,7 +54,7 @@ Todas as músicas reproduzidas são armazenadas em uma **fila separada**, preser
 
 ### Estatísticas do Sistema
 
-O sistema também apresenta informações gerais, incluindo:
+O sistema apresenta:
 
 - Total de músicas cadastradas na biblioteca
 - Quantidade de músicas em cada fila de humor
@@ -74,17 +74,13 @@ sistema_playlist/
 
 ### `musicas.py`
 
-Contém a classe:
-
-- `Musica`
-
-Responsável por representar cada música cadastrada no sistema.
+Contém a classe `Musica`, responsável por representar cada música cadastrada.
 
 ---
 
 ### `estruturas.py`
 
-Contém toda a implementação das estruturas de dados e funções principais.
+Contém:
 
 #### Lista encadeada
 
@@ -113,16 +109,16 @@ Arquivo responsável pela execução e demonstração do funcionamento completo 
 ## Requisitos atendidos
 
 - Implementação manual com **nós encadeados**
-- Ausência de `list`, `deque` ou estruturas prontas para armazenamento principal
+- Sem uso de `list`, `deque` ou estruturas prontas
 - Histórico implementado como instância separada da classe `Fila`
 - Geração automática de IDs
 - IDs não reutilizados após remoção
-- Reconstrução completa das filas a cada nova montagem
+- Reconstrução completa das filas
 - Tratamento de entradas inválidas:
   - BPM não numérico
   - BPM menor ou igual a zero
   - ID inexistente
-  - fila vazia ao tentar reproduzir
+  - Fila vazia ao tentar reproduzir
 
 ---
 
@@ -142,7 +138,7 @@ python main.py
 - Lista Encadeada
 - Fila FIFO
 - Manipulação de nós
-- Modularização de código em múltiplos arquivos
+- Modularização de código
 
 ---
 
