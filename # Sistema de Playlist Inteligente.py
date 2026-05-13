@@ -1,4 +1,4 @@
-# Sistema de PlayList
+# Sistema de Playlist Inteligente
 
 Sistema desenvolvido em Python para gerenciamento de músicas utilizando **estruturas de dados encadeadas**, sem uso de `list`, `deque` ou qualquer estrutura pronta do Python para armazenar os dados principais.
 
