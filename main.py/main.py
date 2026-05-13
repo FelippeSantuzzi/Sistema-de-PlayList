@@ -12,6 +12,16 @@ biblioteca.inserir("Weightless", "Marconi Union", "Ambient", 60)
 biblioteca.inserir("Lofi Study", "ChilledCow", "Lo-fi", 85)
 biblioteca.inserir("Eye of the Tiger", "Survivor", "Rock", 109)
 biblioteca.inserir("Lose Yourself", "Eminem", "Rap", 171)
+biblioteca.inserir("Bohemian Rhapsody", "Queen", "Rock", 72)
+#buscar por ID
+print("\n=== Buscando por ID 2 ===")
+
+resultado = biblioteca.buscar(2)
+
+if resultado:
+    resultado.exibir()
+else:
+    print("Música não encontrada.")
 
 print("\n=== Biblioteca ===")
 biblioteca.listar()
